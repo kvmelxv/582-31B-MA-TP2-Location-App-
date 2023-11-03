@@ -1,1 +1,4 @@
-@import url(header.css);
+@import url(./base/ajout.css);
+@import url(./base/header.css);
+@import url(./base/general.css);
+@import url(./base/table.css);

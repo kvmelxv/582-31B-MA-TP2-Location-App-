@@ -1,23 +1,27 @@
-<!DOCTYPE html>
-            <html lang="en">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>'.$title.'</title>
-                <link rel="stylesheet" href="'.PATH_DIR.'css/style.css">
-            </head>
-            <nav>
-            <ul>
-                <li><a href="'.PATH_DIR.'">Home</a></li>
-                <li><a href="'.PATH_DIR.'client">Client</a></li>
-                <li><a href="'.PATH_DIR.'client/create">Client Create</a></li>
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" href="{{path}}css/style.css">
+
+    <title>{{ title }}</title>
+</head>
+<body>
+    <header>
+        <div></div>
+        <nav>
+            <ul>
+                <li><a href="">Accueil</a></li>
+                <li><a href="">Liste de tous les utlisateurs</a></li>
+                <li><a href="">Liste de tous les appartements</a></li>
+                <li><a href="">Liste de tous les reservations</a></li>
             </ul>
         </nav>
-    <body>
-        <div class="container">
+    </header>
+    <div class="container">
             <h1>Welcome to my MVC project</h1>
-            {{ name }}
-        </div>
-    </body>
+    </div>
+</body>
 </html>

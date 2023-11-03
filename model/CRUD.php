@@ -37,27 +37,27 @@ abstract class Crud extends PDO {
         return $stmt->fetchAll();
     }
 
-    public function insert($data){
-
+    public function insert($data) {
         $data_keys = array_fill_keys($this->fillable, '');
         $data = array_intersect_key($data, $data_keys);
-
-        $nomChamp = implode(", ",array_keys($data));
-        $valeurChamp = ":".implode(", :", array_keys($data));
-
+    
+        $nomChamp = implode(", ", array_keys($data));
+        $valeurChamp = ":" . implode(", :", array_keys($data));
+    
         $sql = "INSERT INTO $this->table ($nomChamp) VALUES ($valeurChamp)";
-
+    
         $stmt = $this->prepare($sql);
-        foreach($data as $key => $value){
+        foreach ($data as $key => $value) {
             $stmt->bindValue(":$key", $value);
         }
+    
         if ($stmt->execute()) {
             return true;
         } else {
             return false;
         }
-     
     }
+
 
     public function delete($value){
 
@@ -90,33 +90,6 @@ abstract class Crud extends PDO {
         }else{
             return $stmt->errorInfo();
         }
-    }
-
-    public function validateFormDataUser($data) {
-
-        if (empty($data['username']) || empty($data['nom']) || empty($data['prenom']) || empty($data['telephone']) || empty($data['courriel']) || empty($data['Type_idType'])) {
-            return false;
-        }
-
-        return true;
-    }
-
-    public function validateFormDataApp($data) {
-
-        if (empty($data['description']) || empty($data['adresse']) || empty($data['NombreChambre']) || empty($data['NombreSalleDeBain']) || empty($data['surface']) || empty($data['prix']) || empty($data['Utilisateur_Username'])) {
-            return false;
-        }
-
-        return true;
-    }
-
-    public function validateFormDataBook($data) {
-
-        if (empty($data['DateDebut']) || empty($data['DateFin'])) {
-            return false;
-        }
-
-        return true;
     }
 
 }

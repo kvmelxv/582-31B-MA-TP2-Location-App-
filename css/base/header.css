@@ -1,8 +1,8 @@
 header {
     display: flex;
     justify-content: space-between;
-    background-color: tomato;
-    padding: 1em;
+    background-color:  #113f67;
+    padding: 1.5em;
 }
 
 header >  nav {
@@ -22,6 +22,7 @@ nav ul > li {
 ul li > a {
     text-decoration: none;
     padding: 0.5em;
+    color: #e7eaf6;
     font-weight: 600;
 }
 
