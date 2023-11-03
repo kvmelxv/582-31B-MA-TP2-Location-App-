@@ -2,7 +2,7 @@
 
 class Type extends CRUD {
 
-    protected $table = 'type';
+    protected $table = 'Type';
     protected $primaryKey = 'idType';
 
     protected $fillable = ['idType', 'type'];

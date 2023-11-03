@@ -6,7 +6,8 @@ require_once('library/RequirePage.php');
 require_once __DIR__.'/vendor/autoload.php';
 require_once('library/Twig.php');
 
-$url = isset($_SERVER['PATH_INFO'])? explode('/', ltrim($_SERVER['PATH_INFO'], '/')) : '/';
+//$url = isset($_SERVER['PATH_INFO'])? explode('/', ltrim($_SERVER['PATH_INFO'], '/')) : '/';
+$url = isset($_GET["url"]) ? explode ('/', ltrim($_GET["url"], '/')) : '/';
 
 if($url == '/'){
     require_once('controller/ControllerHome.php');

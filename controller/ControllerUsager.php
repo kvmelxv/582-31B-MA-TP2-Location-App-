@@ -51,11 +51,6 @@ class ControllerUsager extends controller {
         $update = $usager->delete($_POST['username']);
         RequirePage::url('usager/index');
     }
-
-    
-
-
 }
-
 
 ?>

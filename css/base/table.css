@@ -42,6 +42,7 @@ td{
   border-radius: 10px;
   background-color: #f64b3c;
   color: white;
+  font-family: monospace;
   transition-duration: 0.5s;
 }
 
@@ -53,7 +54,7 @@ td{
 div {
   display: flex;
   justify-content: center;
-  margin: 1em;
+  margin: 0.5em;
 }
 
 .btn-ajout {
@@ -69,6 +70,8 @@ div {
 
 .btn-ajout > a {
   color: whitesmoke ;
+  font-family: monospace;
+  text-decoration: none;
 }
 
 .btn-ajout:hover{
@@ -82,8 +85,22 @@ div {
 
 a {
   margin-top: 10px;
-  text-decoration: none;
+  text-decoration: underline;
   font-weight: 600;
+}
+
+.Btn-sup-app{
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #f64b3c;
+  color: white;
+  transition-duration: 0.5s;
+}
+
+.Btn-sup-app:hover {
+  background-color: #c81912;
+  transition-duration: 0.5s;
 }
 
 

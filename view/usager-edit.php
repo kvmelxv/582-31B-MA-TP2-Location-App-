@@ -1,7 +1,7 @@
 <body>
     {{ include('header.php', {title: 'User Edit'}) }}
     <h1>Modifier un usager</h1>
-
+    <p>Les Usernames ne peuvent pas etre modifier. Ce sont des valeurs uniques.</p>
     <form class="form" action="{{path}}usager/update" method="POST">
         <label>Username</label>
         <input type="text" name="Username" value="{{ usager.Username}}">

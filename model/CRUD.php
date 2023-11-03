@@ -2,13 +2,13 @@
 
 abstract class Crud extends PDO {
 
-    /*public function __construct(){
-        parent::__construct('mysql:host=localhost; dbname=e2395368; port=3306; charset=utf8', 'e2395368', 'v98WPmdZVlChAT7JtvhZ');
-    }*/
-
     public function __construct(){
-        parent::__construct('mysql:host=localhost; dbname=locationappartement; port=3306; charset=utf8', 'root', '');
+        parent::__construct('mysql:host=localhost; dbname=e2395368; port=3306; charset=utf8', 'e2395368', 'v98WPmdZVlChAT7JtvhZ');
     }
+
+    /*public function __construct(){
+        parent::__construct('mysql:host=localhost; dbname=locationappartement; port=3306; charset=utf8', 'root', '');
+    }*/
 
     public function select($field, $order){
         $sql="SELECT * FROM $this->table ORDER BY $field $order";
@@ -58,7 +58,6 @@ abstract class Crud extends PDO {
         }
     }
 
-
     public function delete($value){
 
         $sql = "DELETE FROM $this->table WHERE $this->primaryKey = :$this->primaryKey";
@@ -72,22 +71,24 @@ abstract class Crud extends PDO {
     }
 
     public function update($data){
-      
+        
         $queryField = null;
-        foreach($data as $key=>$value){
-            $queryField .="$key =:$key, ";
+        foreach($data as $key => $value){
+            $queryField .= "$key = :$key, ";
         }
         $queryField = rtrim($queryField, ", ");
-
+    
         $sql = "UPDATE $this->table SET $queryField WHERE $this->primaryKey = :$this->primaryKey";
-
+    
         $stmt = $this->prepare($sql);
         foreach($data as $key => $value){
             $stmt->bindValue(":$key", $value);
         }
+        $stmt->bindValue(":$this->primaryKey", $data[$this->primaryKey]);
+    
         if($stmt->execute()){
             return true;
-        }else{
+        } else {
             return $stmt->errorInfo();
         }
     }
