@@ -1,6 +1,6 @@
 <?php
 
-define('PATH_DIR', 'http://localhost/phpfiles/WebAvancee22635/582-31B-MA-TP2-Location-App-/');
+define('PATH_DIR', 'http://localhost/phpfiles/582-31B-MA-TP2-Location-App-/');
 //define('PATH_DIR', 'https://e2395368.webdev.cmaisonneuve.qc.ca/582-31B-MA-TP2-Location-App-/');
 require_once('controller/Controller.php');
 require_once('library/RequirePage.php');
