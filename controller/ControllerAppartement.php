@@ -2,6 +2,7 @@
 
 RequirePage::model('CRUD');
 RequirePage::model('Appartement');
+RequirePage::library('Validation');
 
 class ControllerAppartement extends controller {
 
@@ -19,11 +20,25 @@ class ControllerAppartement extends controller {
     }
 
     public function store(){
-
-        $Appart = new Appartement;
-        $insert = $Appart->insert($_POST);  
-        RequirePage::url('appartement/index');
         
+        $validation = new Validation;
+        extract($_POST);
+        $validation->name('Description')->value($Description)->max(100)->min(10);
+        $validation->name('Adresse')->value($Adresse)->min(1);
+        $validation->name('NombreChambre')->value($NombreChambre)->min(1);
+        $validation->name('NombreSalleDeBain')->value($NombreSalleDeBain)->min(1);
+        $validation->name('Surface')->value($NombreSalleDeBain)->min(1);
+        $validation->name('Prix')->value($NombreSalleDeBain)->min(1);
+
+        if (!$validation->isSuccess()) {
+            $errors = $validation->displayErrors();
+            return Twig::render('appart-create.php', ['errors' =>$errors, 'Appartement' => $_POST]);
+        } else {
+            $Appart = new Appartement;
+            $insert = $Appart->insert($_POST);  
+            RequirePage::url('appartement/index');
+        }
+   
     }
 
     public function edit($id){
@@ -34,13 +49,26 @@ class ControllerAppartement extends controller {
     }
 
     public function update(){
-        
-        $Appart = new Appartement;
-        $update = $Appart->update($_POST);
-        RequirePage::url('appartement/index');
+
+        $validation = new Validation;
+        extract($_POST);
+        $validation->name('Description')->value($Description)->max(100)->min(10);
+        $validation->name('Adresse')->value($Adresse)->min(1);
+        $validation->name('NombreChambre')->value($NombreChambre)->min(1);
+        $validation->name('NombreSalleDeBain')->value($NombreSalleDeBain)->min(1);
+        $validation->name('Surface')->value($NombreSalleDeBain)->min(1);
+        $validation->name('Prix')->value($NombreSalleDeBain)->min(1);
+
+        if (!$validation->isSuccess()) {
+            $errors = $validation->displayErrors();
+            return Twig::render('appart-create.php', ['errors' =>$errors, 'Appartement' => $_POST]);
+        } else {
+            $Appart = new Appartement;
+            $update = $Appart->update($_POST);
+            RequirePage::url('appartement/index');
+        }
     }
 
-    
     public function destroy(){
         
         $Appart = new Appartement;

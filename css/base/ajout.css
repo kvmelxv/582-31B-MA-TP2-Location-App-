@@ -10,10 +10,11 @@ h1 {
     width: 35%;
     margin: auto;
     padding: 1em;
-    border: 5px solid #113f67;
-    background-color: #a2a8d3;
+    border: 2px solid #113f67;
+    background-color: #e7eaf6;
     border-radius: 20px;
     margin-bottom: 2em;
+    box-shadow: 0 4px 20px rgba(0, 25, 79, 0.404);
 }
 
 .form > label {
@@ -28,9 +29,9 @@ h1 {
     padding: 1em;  
     border-style: none;
     border-bottom: 2px solid black ;
-    background-color: #a2a8d3;
     outline: none;
     font-family: monospace;
+    background-color: #e7eaf6;
 
 }
 
@@ -39,7 +40,7 @@ h1 {
     margin: 0.5em auto 0.5em auto;
     padding: 0.5em;
     cursor: pointer;
-    background-color: #a2a8d3;
+    background-color: #e7eaf6;
     border: 2px solid black;
     outline: none;
 

@@ -7,7 +7,6 @@
         <input type="submit" value="Connexion" class="btn-login">
         <div class="container-lien">
             <a href="{{path}}login/forgot">Mot de passe oublié ?</a>
-            <a href="">S'inscrire</a>
         </div>
     </form>
 </div>
