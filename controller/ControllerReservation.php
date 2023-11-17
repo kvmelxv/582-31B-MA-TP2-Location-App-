@@ -4,6 +4,7 @@ RequirePage::model('CRUD');
 requirePage::model('Reservation');
 RequirePage::model('Appartement');
 requirePage::model('Usager');
+RequirePage::library('Validation');
 
 class ControllerReservation extends controller {
 
@@ -25,9 +26,22 @@ class ControllerReservation extends controller {
 
     public function store(){
 
-         $reserv = new Reservation;
-         $insert = $reserv->insert($_POST);  
-         RequirePage::url('reservation/index');
+        $validation = new Validation;
+        extract($_POST);
+
+        $validation->name('DateDebut')->value($DateDebut)->required()->pattern('date_ymd');
+        $validation->name('DateFin')->value($DateFin)->required()->pattern('date_ymd');
+        $validation->name('Utilisateur_Username')->value($Utilisateur_Username)->required();
+        $validation->name('Appartement_idAppartement')->value($Appartement_idAppartement)->required();
+
+        if (!$validation->isSuccess()) {
+            $errors = $validation->displayErrors();
+            return Twig::render('reserv-create.php', ['errors' =>$errors, 'Reservation' => $_POST]);
+        } else {
+            $reserv = new Reservation;
+            $insert = $reserv->insert($_POST);  
+            RequirePage::url('reservation/index');
+        }
         
     }
 
@@ -43,10 +57,23 @@ class ControllerReservation extends controller {
     }
 
     public function update(){
-        
-        $reserv = new Reservation;
-        $update = $reserv->update($_POST);
-        RequirePage::url('reservation/index');
+
+        $validation = new Validation;
+        extract($_POST);
+
+        $validation->name('DateDebut')->value($DateDebut)->required()->pattern('date_ymd');
+        $validation->name('DateFin')->value($DateFin)->required()->pattern('date_ymd');
+        $validation->name('Utilisateur_Username')->value($Utilisateur_Username)->required();
+        $validation->name('Appartement_idAppartement')->value($Appartement_idAppartement)->required();
+
+        if (!$validation->isSuccess()) {
+            $errors = $validation->displayErrors();
+            return Twig::render('reserv-create.php', ['errors' =>$errors, 'Reservation' => $_POST]);
+        } else {
+            $reserv = new Reservation;
+            $update = $reserv->update($_POST);
+            RequirePage::url('reservation/index'); 
+        }
     }
 
     

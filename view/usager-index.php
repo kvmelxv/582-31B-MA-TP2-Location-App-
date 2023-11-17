@@ -9,6 +9,8 @@
             <th>Username</th>
             <th>Téléphone</th>
             <th>Courriel</th>
+            <th>Mot de passe</th>
+            <th>Mot de passe Temporaire</th>
             <th>Type d'utilisateur</th>
             <th>Action</th>    
         </tr>
@@ -17,8 +19,10 @@
                 <td>{{ usager.Nom }}</td>
                 <td>{{ usager.Prenom }}</td>
                 <td>{{ usager.Username }}</td>
-                <td>{{ usager.Courriel }}</td>
                 <td>{{ usager.Telephone }}</td>
+                <td>{{ usager.Courriel }}</td>
+                <td>{{ usager.Password }}</td>
+                <td>{{ usager.TempPassword }}</td>
                 <td>{{ usager.Type_idType }}</td>
                 <td>
                     <div class="bloc-action">

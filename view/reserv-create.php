@@ -1,11 +1,12 @@
 <body>
     {{ include('header.php', {title: 'add reserv'}) }}
     <h1>Ajouter une nouvelle réservation</h1>
+    <span class="text-danger">{{ errors | raw }}</span>
     <form class="form" action="{{path}}reservation/store" method="POST">
         <label>Date de début</label>
-        <input type="date" name="DateDebut">
+        <input type="date" name="DateDebut" value='{{ Reservation.DateDebut }}'>
         <label>Date de fin</label>
-        <input type="date" name="DateFin">
+        <input type="date" name="DateFin" value='{{ Reservation.DateFin }}'>
         <label>Locataire</label>
         <select name="Utilisateur_Username">
             <option value="">Selectionner un locataire</option>
