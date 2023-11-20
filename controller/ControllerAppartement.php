@@ -15,6 +15,11 @@ class ControllerAppartement extends controller {
 
     public function create(){
 
+        if ($_SESSION['Type_idType'] !== 1) {
+            RequirePage::url('error');
+            die();
+        }
+
         $Appart = new Appartement;
         return Twig::render('appart-create.php');
     }
@@ -25,7 +30,7 @@ class ControllerAppartement extends controller {
         extract($_POST);
 
         $validation->name('Description')->value($Description)->max(100)->min(10);
-        $validation->name('Adresse')->value($Adresse)->min(1);
+        $validation->name('Adresse')->value($Adresse)->min(10);
         $validation->name('NombreChambre')->value($NombreChambre)->min(1);
         $validation->name('NombreSalleDeBain')->value($NombreSalleDeBain)->min(1);
         $validation->name('Surface')->value($Surface)->min(1);
@@ -51,6 +56,11 @@ class ControllerAppartement extends controller {
 
     public function update(){
 
+        if ($_SESSION['Type_idType'] !== 1) {
+            RequirePage::url('error');
+            die();
+        }
+
         $validation = new Validation;
         extract($_POST);
         $validation->name('Description')->value($Description)->max(100)->min(10);
@@ -62,7 +72,7 @@ class ControllerAppartement extends controller {
 
         if (!$validation->isSuccess()) {
             $errors = $validation->displayErrors();
-            return Twig::render('appart-create.php', ['errors' =>$errors, 'Appartement' => $_POST]);
+            return Twig::render('appart-create.php', ['errors' =>$errors, 'appart' => $_POST]);
         } else {
             $Appart = new Appartement;
             $update = $Appart->update($_POST);

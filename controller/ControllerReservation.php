@@ -10,6 +10,11 @@ class ControllerReservation extends controller {
 
     public function index(){
 
+        if ($_SESSION['Type_idType'] !== 1) {
+            RequirePage::url('error');
+            die();
+        }
+
         $book = new Reservation;
         $select = $book->select('DateDebut', 'ASC');
         return Twig::render('reserv-index.php', ['books'=>$select]);     
@@ -40,7 +45,7 @@ class ControllerReservation extends controller {
         } else {
             $reserv = new Reservation;
             $insert = $reserv->insert($_POST);  
-            RequirePage::url('reservation/index');
+            RequirePage::url('home');
         }
         
     }

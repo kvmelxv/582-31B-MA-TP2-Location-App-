@@ -7,8 +7,8 @@ class ControllerHome extends Controller {
         return Twig::render('home.php');
     }
 
-    public function error($e = null){
-        return 'error '.$e;
+    public function error(){
+        return Twig::render('error/page404.html');
     }
 
 }

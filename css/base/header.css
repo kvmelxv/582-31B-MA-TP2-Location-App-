@@ -5,6 +5,10 @@ header {
     padding: 0.5em;
 }
 
+.logo {
+    align-items: center;
+}
+
 header >  nav {
     padding: 0.5em;
 }
@@ -39,4 +43,9 @@ ul div li > a {
 
 ul div li > a:hover {
     color: white;
+}
+
+.user > p {
+    color: white;
+    text-decoration: underline;
 }

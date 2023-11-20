@@ -9,10 +9,14 @@
         <input type="date" name="DateFin" value='{{ Reservation.DateFin }}'>
         <label>Locataire</label>
         <select name="Utilisateur_Username">
-            <option value="">Selectionner un locataire</option>
-            {%  for usager in usagers %}
-            <option value="{{ usager.Username }}">{{ usager.Prenom }} {{ usager.Nom }}</option>
-            {% endfor %}
+            <option value="">Sélectionner un locataire</option>
+            {% if session.Type_idType == 2 %}
+               <option value="{{ session.Username }}">{{ session.Prenom }} {{ session.Nom }}</option>
+            {% else %}
+                {% for usager in usagers %}
+                    <option value="{{ usager.Username }}">{{ usager.Prenom }} {{ usager.Nom }}</option>
+                {% endfor %}
+            {% endif %}
         </select>
         <label>Appartement</label>
         <select name="Appartement_idAppartement">

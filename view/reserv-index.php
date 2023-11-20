@@ -9,7 +9,9 @@
             <th>Date de Fin</th>
             <th>Locataire</th>
             <th>Appartement</th> 
-            <th>Action</th>
+            {% if session.Type_idType == 1 %}
+               <th>Action</th>
+            {% endif %}
         </tr>
         {% for book in books %}
             <tr>
@@ -18,15 +20,17 @@
                 <td>{{ book.DateFin }}</td>
                 <td>{{ book.Utilisateur_Username }}</td>
                 <td>{{ book.Appartement_idAppartement }}</td>
-                <td>
-                    <div class="bloc-action">
-                        <form class="form-action" action="{{path}}reservation/destroy" method="POST">
-                            <input type="hidden" name="id" value="{{book.id}}">
-                            <input type="submit" value="Supprimer" class="Btn-sup">
-                        </form>
-                        <a href="{{path}}reservation/edit/{{ book.id }}">Modifier</a>
-                    </div>   
-                </td>
+                {% if session.Type_idType == 1 %}
+                    <td>
+                        <div class="bloc-action">
+                            <form class="form-action" action="{{path}}reservation/destroy" method="POST">
+                                <input type="hidden" name="id" value="{{book.id}}">
+                                <input type="submit" value="Supprimer" class="Btn-sup">
+                            </form>
+                            <a href="{{path}}reservation/edit/{{ book.id }}">Modifier</a>
+                        </div>   
+                    </td>
+                {% endif %}
             </tr>
         {% endfor %}
     </table>

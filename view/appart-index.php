@@ -1,7 +1,9 @@
 <body>
 {{ include('header.php', {title: 'App List'}) }}
     <h1 class="titre-utilis">Liste des Appartements</h1>
-    <button class="btn-ajout"><a href="{{path}}appartement/create">Ajouter un appart</a></button>
+    {% if session.Type_idType == 1 %}
+        <button class="btn-ajout"><a href="{{path}}appartement/create">Ajouter un appart</a></button>
+    {% endif %}
     <table>
         <tr>
             <th>Id</th>
@@ -11,7 +13,9 @@
             <th>Nombre de salle de bain</th>
             <th>Surface</th>
             <th>Prix/ mois</th> 
-            <th>Action</th>
+            {% if session.Type_idType == 1 %}
+                <th>Action</th>
+            {% endif %}
         </tr>
         {% for appart in apparts %}
             <tr>
@@ -22,15 +26,17 @@
                 <td>{{ appart.NombreSalleDeBain }}</td>
                 <td>{{ appart.Surface }}</td>
                 <td>{{ appart.Prix }}</td>
-                <td>
-                    <div class="bloc-action">
-                        <form class="form-action" action="{{path}}appartement/destroy" method="POST">
-                            <input type="hidden" name="id" value="{{appart.idAppartement}}">
-                            <input type="submit" value="Supprimer" class="Btn-sup-app">
-                        </form>
-                        <a href="{{path}}appartement/edit/{{ appart.idAppartement }}">Modifier</a>
-                    </div>   
-                </td>
+                {% if session.Type_idType == 1 %}
+                    <td>
+                        <div class="bloc-action">
+                            <form class="form-action" action="{{path}}appartement/destroy" method="POST">
+                                <input type="hidden" name="id" value="{{appart.idAppartement}}">
+                                <input type="submit" value="Supprimer" class="Btn-sup-app">
+                            </form>
+                            <a href="{{path}}appartement/edit/{{ appart.idAppartement }}">Modifier</a>
+                        </div>   
+                    </td>
+                {% endif %}
             </tr>
         {% endfor %}
     </table>

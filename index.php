@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 
 define('PATH_DIR', 'http://localhost/phpfiles/582-31B-MA-TP2-Location-App-/');
 //define('PATH_DIR', 'https://e2395368.webdev.cmaisonneuve.qc.ca/582-31B-MA-TP2-Location-App-/');
