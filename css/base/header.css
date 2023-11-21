@@ -1,6 +1,6 @@
 header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     background-color:  #113f67;
     padding: 0.5em;
 }
@@ -39,6 +39,7 @@ ul div li > a {
     padding: 0.5em;
     color: #e7eaf6;
     font-weight: 600;
+    font-size: 12px;
 }
 
 ul div li > a:hover {
